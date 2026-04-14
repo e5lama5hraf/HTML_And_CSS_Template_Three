@@ -848,6 +848,7 @@ header .nav .megamenu .links li a i {
     top: 0;
     height: 100%;
     background-color: var(--main-color);
+    transition: 0.8s;
 }
 /* End Skills */
 /* Start Works */
