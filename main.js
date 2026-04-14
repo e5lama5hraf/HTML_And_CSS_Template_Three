@@ -1,11 +1,21 @@
 let skillsSection = document.querySelector(".our-skills")
 let spans = document.querySelectorAll(".our-skills .progress span");
 
+let statsSection = document.querySelector(".stats");
+let analysisStats = document.querySelectorAll(".stats .content span");
+let started = false;
+
 window.onscroll = function () {
     if (window.scrollY >= skillsSection.offsetTop - 300) {
         spans.forEach((span) => {
             span.style.width = span.dataset.width;
         });
+    }
+        if (window.scrollY >= statsSection.offsetTop - 200) {
+        if (!started) {
+            analysisStats.forEach((element) => increaseNums(element));
+        }
+        started = true;
     }
 }
 
@@ -25,20 +35,6 @@ let counter = setInterval(() => {
     document.querySelector(".events .time .seconds").innerHTML = seconds < 10 ? `0${seconds}`: seconds;
 }, 1000);
 
-
-let statsSection = document.querySelector(".stats");
-let analysisStats = document.querySelectorAll(".stats .content span");
-let started = false;
-
-window.onscroll = function () {
-    if (window.scrollY >= statsSection - 200) {
-        if (!started) {
-            analysisStats.forEach((element) => increaseNums(element));
-        }
-        started = true;
-    }
-};
-
 function increaseNums(el) {
     let goal = el.dataset.goal;
     let counter = setInterval(() => {
@@ -46,5 +42,5 @@ function increaseNums(el) {
         if (el.textContent == goal) {
             clearInterval(counter);
         }
-    }, 3000 / goal);
+    }, 2000 / goal);
 };
